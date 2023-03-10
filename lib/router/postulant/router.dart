@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:test_router_app/views/details_screen.dart';
-import 'package:test_router_app/views/root_page.dart';
+import 'package:test_router_app/views/postulant_page.dart';
+import 'package:test_router_app/views/single_postulant.dart';
 
 class PostulantRoutes {
   final routes = GoRoute(
-    path: '/offers',
-    name: 'offers',
+    path: '/postulants',
+    name: 'postulants',
     pageBuilder: (BuildContext context, GoRouterState state) =>
         const NoTransitionPage(
-      child: RootPage(label: 'Offers', detailsPath: '/offers/details'),
+      child: PostulantPage(label: 'Postulants List'),
     ),
     routes: [
       GoRoute(
-        path: 'details',
-        builder: (BuildContext context, GoRouterState state) =>
-            const DetailsScreen(label: 'Offers'),
+        name: 'postulant',
+        path: ':id',
+        builder: (context, state) => SinglePostulantPage(
+          id: state.params['id'],
+        ),
       ),
     ],
   );
