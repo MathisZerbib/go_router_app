@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:test_router_app/router/routes.dart';
 import 'package:url_strategy/url_strategy.dart';
-import 'router/routes.dart';
 
 void main() {
   setPathUrlStrategy();
@@ -15,7 +15,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final _router = Routes().routes;
+  final _router = CustomRouter().routesList;
 
   @override
   Widget build(BuildContext context) {
