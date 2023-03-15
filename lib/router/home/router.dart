@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:test_router_app/views/details_screen.dart';
-import 'package:test_router_app/views/root_page.dart';
+import 'package:test_router_app/views/home.dart';
 
-class TdbRoutes {
+class HomeRoutes {
   final routes = GoRoute(
     path: '/home',
-    name: 'tableau de bord',
-    pageBuilder: (BuildContext context, GoRouterState state) =>
-        const NoTransitionPage(
-      child: RootPage(label: 'Tableau de bord', detailsPath: '/'),
-    ),
+    name: 'home',
+    // pageBuilder: (BuildContext context, GoRouterState state) =>
+    //     const NoTransitionPage(
+    //   child: RootPage(label: 'Tableau de bord', detailsPath: '/'),
+    // ),
+    builder: (BuildContext context, GoRouterState state) => const HomePage(),
     routes: [
       GoRoute(
         path: 'details',

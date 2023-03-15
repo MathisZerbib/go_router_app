@@ -97,6 +97,9 @@ class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
             IconButton(
               tooltip: tabs[i].label,
               icon: tabs[i].icon,
+              color: i == _currentIndex
+                  ? const Color.fromRGBO(234, 94, 64, 1)
+                  : Colors.white,
               onPressed: () => _onItemTapped(context, i),
             ),
           IconButton(
