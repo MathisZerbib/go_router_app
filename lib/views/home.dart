@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
           ),
           Center(
             child: Text(
-              'Satistiques',
+              'Statistiques',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),

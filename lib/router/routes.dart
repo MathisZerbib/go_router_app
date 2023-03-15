@@ -5,7 +5,7 @@ import 'package:test_router_app/router/etablissement/router.dart';
 import 'package:test_router_app/router/offer/router.dart';
 import 'package:test_router_app/router/postulant/router.dart';
 import 'package:test_router_app/views/error_page.dart';
-import 'package:test_router_app/widgets/bottom_nav_bar.dart';
+import 'package:test_router_app/widgets/top_nav_bar.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();

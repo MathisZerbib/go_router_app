@@ -23,7 +23,7 @@ class SinglePostulantPageState extends State<SinglePostulantPage> {
             ),
             ElevatedButton(
               onPressed: () {
-                context.goNamed('Tableau de bord');
+                context.pop();
               },
               child: const Text('Retourner en arrière'),
             ),

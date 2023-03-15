@@ -12,13 +12,6 @@ class ScaffoldWithBottomNavBar extends StatefulWidget {
       _ScaffoldWithBottomNavBarState();
 }
 
-const appBarTitles = <String>[
-  'Tableau de bord',
-  'Offres',
-  'Jobbeurs',
-  'Etablissement'
-];
-
 const tabs = [
   ScaffoldWithNavBarTabItem(
     initialLocation: '/home',
@@ -77,31 +70,65 @@ class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
     return Scaffold(
       body: widget.child,
       appBar: AppBar(
-        centerTitle: true,
-        title: Text(appBarTitles[_currentIndex]),
+        // centerTitle: true,
+        // title: Text(appBarTitles[_currentIndex]),
+        title: Row(
+          children: [
+            IconButton(
+              icon: SvgPicture.asset("jobme_logo_white.svg",
+                  width: 250, fit: BoxFit.fitWidth),
+              onPressed: () => context.goNamed('home'),
+            ),
+            for (var i = 0; i < tabs.length; i++)
+              SizedBox(
+                width: 100,
+                child: IconButton(
+                  tooltip: tabs[i].label,
+                  icon: tabs[i].icon,
+                  color: i == _currentIndex
+                      ? const Color.fromRGBO(234, 94, 64, 1)
+                      : Colors.white,
+                  onPressed: () => _onItemTapped(context, i),
+                ),
+              ),
+          ],
+        ),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(10),
           ),
         ),
         backgroundColor: const Color.fromRGBO(0, 82, 102, 1),
-        leading: IconButton(
-          icon: SvgPicture.asset(
-            "jobme_logo_white.svg",
-            height: 30,
-          ),
-          onPressed: () => context.goNamed('Tableau de bord'),
-        ),
+        // leading: Row(
+        //   children: [
+        //     IconButton(
+        //       icon: SvgPicture.asset(
+        //         "jobme_logo_white.svg",
+        //         height: 30,
+        //       ),
+        //       onPressed: () => context.goNamed('home'),
+        //     ),
+        //     for (var i = 0; i < tabs.length; i++)
+        //       IconButton(
+        //         tooltip: tabs[i].label,
+        //         icon: tabs[i].icon,
+        //         color: i == _currentIndex
+        //             ? const Color.fromRGBO(234, 94, 64, 1)
+        //             : Colors.white,
+        //         onPressed: () => _onItemTapped(context, i),
+        //       ),
+        //   ],
+        // ),
         actions: [
-          for (var i = 0; i < tabs.length; i++)
-            IconButton(
-              tooltip: tabs[i].label,
-              icon: tabs[i].icon,
-              color: i == _currentIndex
-                  ? const Color.fromRGBO(234, 94, 64, 1)
-                  : Colors.white,
-              onPressed: () => _onItemTapped(context, i),
-            ),
+          //         for (var i = 0; i < tabs.length; i++)
+          // IconButton(
+          //   tooltip: tabs[i].label,
+          //   icon: tabs[i].icon,
+          //   color: i == _currentIndex
+          //       ? const Color.fromRGBO(234, 94, 64, 1)
+          //       : Colors.white,
+          //   onPressed: () => _onItemTapped(context, i),
+          // ),
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () => context.goNamed('logout'),

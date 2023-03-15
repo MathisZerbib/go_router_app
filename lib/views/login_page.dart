@@ -16,7 +16,7 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-                onPressed: () => {context.goNamed('Tableau de bord')},
+                onPressed: () => {context.goNamed('home')},
                 child: const Text('Aller sur le Tableau de bord')),
           ],
         ),

@@ -16,7 +16,7 @@ class OffresPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-                onPressed: () => {context.goNamed('Tableau de bord')},
+                onPressed: () => {context.goNamed('home')},
                 child: const Text('aller sur le Tableau de bord')),
           ],
         ),
