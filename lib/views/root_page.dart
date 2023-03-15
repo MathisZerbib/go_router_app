@@ -16,9 +16,6 @@ class RootPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Tab root - $label'),
-      ),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -28,7 +25,7 @@ class RootPage extends StatelessWidget {
             const Padding(padding: EdgeInsets.all(4)),
             TextButton(
               onPressed: () => context.go(detailsPath),
-              child: const Text('View details'),
+              child: const Text('voir le detail'),
             ),
           ],
         ),

@@ -22,9 +22,6 @@ class DetailsScreenState extends State<DetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Details Screen - ${widget.label}'),
-      ),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,

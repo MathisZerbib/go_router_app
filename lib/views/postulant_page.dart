@@ -14,9 +14,6 @@ class PostulantPageState extends State<PostulantPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Tab root - ${widget.label}'),
-      ),
       body: UserList(
         users: [
           User(id: "1", name: 'John', email: 'johndoe@gmail.com'),

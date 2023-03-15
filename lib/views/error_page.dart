@@ -8,13 +8,14 @@ class ErrorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color.fromRGBO(0, 82, 102, 1),
         automaticallyImplyLeading: true,
         title: const Text("Error Screen"),
       ),
       body: Center(
         child: ElevatedButton(
-          onPressed: () => context.goNamed("dashboard"),
-          child: const Text("Go to home page"),
+          onPressed: () => context.goNamed("Tableau de bord"),
+          child: const Text("Aller sur le tableau de bord"),
         ),
       ),
     );

@@ -14,9 +14,6 @@ class SinglePostulantPageState extends State<SinglePostulantPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Single User'),
-      ),
       body: Center(
         child: Column(
           children: [
@@ -26,9 +23,9 @@ class SinglePostulantPageState extends State<SinglePostulantPage> {
             ),
             ElevatedButton(
               onPressed: () {
-                context.goNamed('dashboard');
+                context.goNamed('Tableau de bord');
               },
-              child: const Text('Go Back'),
+              child: const Text('Retourner en arrière'),
             ),
           ],
         ),

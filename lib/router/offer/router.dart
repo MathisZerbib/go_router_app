@@ -3,19 +3,19 @@ import 'package:go_router/go_router.dart';
 import 'package:test_router_app/views/details_screen.dart';
 import 'package:test_router_app/views/root_page.dart';
 
-class OfferRoutes {
+class OffreRoutes {
   final routes = GoRoute(
-    path: '/offers',
-    name: 'offers',
+    path: '/offres',
+    name: 'offres',
     pageBuilder: (BuildContext context, GoRouterState state) =>
         const NoTransitionPage(
-      child: RootPage(label: 'Offers', detailsPath: '/offers/details'),
+      child: RootPage(label: 'Offres', detailsPath: '/offres/details'),
     ),
     routes: [
       GoRoute(
         path: 'details',
         builder: (BuildContext context, GoRouterState state) =>
-            const DetailsScreen(label: 'Offers'),
+            const DetailsScreen(label: 'Offres'),
       ),
     ],
   );

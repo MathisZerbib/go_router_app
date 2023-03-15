@@ -16,8 +16,8 @@ class EtablissementPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-                onPressed: () => {context.goNamed('dashboard')},
-                child: const Text('go dashboard')),
+                onPressed: () => {context.goNamed('Tableau de bord')},
+                child: const Text('aller sur le Tableau de bord')),
           ],
         ),
       ),

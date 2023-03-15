@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 class ScaffoldWithBottomNavBar extends StatefulWidget {
@@ -11,16 +12,23 @@ class ScaffoldWithBottomNavBar extends StatefulWidget {
       _ScaffoldWithBottomNavBarState();
 }
 
+const appBarTitles = <String>[
+  'Tableau de bord',
+  'Offres',
+  'Jobbeurs',
+  'Etablissement'
+];
+
 const tabs = [
   ScaffoldWithNavBarTabItem(
-    initialLocation: '/dashboard',
-    icon: Icon(Icons.home),
-    label: 'Dashboard',
+    initialLocation: '/home',
+    icon: Icon(Icons.dashboard),
+    label: 'Tableau de bord',
   ),
   ScaffoldWithNavBarTabItem(
-    initialLocation: '/offers',
+    initialLocation: '/offres',
     icon: Icon(Icons.work),
-    label: 'Offers',
+    label: 'Offres',
   ),
   ScaffoldWithNavBarTabItem(
     initialLocation: '/postulants',
@@ -28,9 +36,9 @@ const tabs = [
     label: 'Jobbeurs',
   ),
   ScaffoldWithNavBarTabItem(
-    initialLocation: '/etablishment',
+    initialLocation: '/etablissement',
     icon: Icon(Icons.build),
-    label: 'Etablishment',
+    label: 'Etablissement',
   ),
 ];
 
@@ -68,12 +76,31 @@ class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: widget.child,
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.orange,
-        unselectedItemColor: Colors.grey,
-        currentIndex: _currentIndex,
-        items: tabs,
-        onTap: (index) => _onItemTapped(context, index),
+      appBar: AppBar(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(10),
+          ),
+        ),
+        backgroundColor: const Color.fromRGBO(0, 82, 102, 1),
+        leading: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            child: SvgPicture.asset(
+              "jobme_logo_white.svg",
+              semanticsLabel: 'JobMe',
+            )),
+        actions: [
+          for (var i = 0; i < tabs.length; i++)
+            IconButton(
+              tooltip: tabs[i].label,
+              icon: tabs[i].icon,
+              onPressed: () => _onItemTapped(context, i),
+            ),
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () => context.goNamed('logout'),
+          ),
+        ],
       ),
     );
   }

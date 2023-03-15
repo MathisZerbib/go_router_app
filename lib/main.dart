@@ -15,7 +15,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final _router = CustomRouter().routesList;
+  final _router = MainRouter().routes;
 
   @override
   Widget build(BuildContext context) {
