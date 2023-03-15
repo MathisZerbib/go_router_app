@@ -77,18 +77,21 @@ class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
     return Scaffold(
       body: widget.child,
       appBar: AppBar(
+        centerTitle: true,
+        title: Text(appBarTitles[_currentIndex]),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(10),
           ),
         ),
         backgroundColor: const Color.fromRGBO(0, 82, 102, 1),
-        leading: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            child: SvgPicture.asset(
-              "jobme_logo_white.svg",
-              semanticsLabel: 'JobMe',
-            )),
+        leading: IconButton(
+          icon: SvgPicture.asset(
+            "jobme_logo_white.svg",
+            height: 30,
+          ),
+          onPressed: () => context.goNamed('Tableau de bord'),
+        ),
         actions: [
           for (var i = 0; i < tabs.length; i++)
             IconButton(
