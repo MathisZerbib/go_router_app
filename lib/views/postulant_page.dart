@@ -21,21 +21,23 @@ class PostulantPageState extends State<PostulantPage> {
 
   Future<void> getPostulants() {
     return Future.delayed(
-      const Duration(seconds: 3),
+      const Duration(seconds: 1),
       () {
-        setState(
-          () {
-            users = [
-              User(id: "1", name: 'John', email: 'johndoe@gmail.com'),
-              User(id: "2", name: 'Jane', email: 'janeDoe&gmail.com'),
-              User(id: "3", name: 'Jack', email: 'jackDoe@gmail.com'),
-              User(id: "4", name: 'Jill', email: 'jillDoe@gmail.com'),
-              User(id: "5", name: 'Jen', email: 'JenDoe@gmail.com'),
-              User(id: "6", name: 'Jenny', email: 'JennyDoe@gmail.com'),
-              User(id: "7", name: 'Jenifer', email: 'JeniferDoe@gmail.com'),
-            ];
-          },
-        );
+        if (mounted) {
+          setState(
+            () {
+              users = [
+                User(id: "1", name: 'John', email: 'johndoe@gmail.com'),
+                User(id: "2", name: 'Jane', email: 'janeDoe&gmail.com'),
+                User(id: "3", name: 'Jack', email: 'jackDoe@gmail.com'),
+                User(id: "4", name: 'Jill', email: 'jillDoe@gmail.com'),
+                User(id: "5", name: 'Jen', email: 'JenDoe@gmail.com'),
+                User(id: "6", name: 'Jenny', email: 'JennyDoe@gmail.com'),
+                User(id: "7", name: 'Jenifer', email: 'JeniferDoe@gmail.com'),
+              ];
+            },
+          );
+        }
       },
     );
   }

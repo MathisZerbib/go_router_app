@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 class ScaffoldWithBottomNavBar extends StatefulWidget {
@@ -25,12 +25,12 @@ const tabs = [
   ),
   ScaffoldWithNavBarTabItem(
     initialLocation: '/postulants',
-    icon: Icon(Icons.person),
+    icon: Icon(Icons.folder),
     label: 'Jobbeurs',
   ),
   ScaffoldWithNavBarTabItem(
     initialLocation: '/etablissement',
-    icon: Icon(Icons.build),
+    icon: Icon(Icons.storefront),
     label: 'Etablissement',
   ),
 ];
@@ -70,68 +70,120 @@ class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
     return Scaffold(
       body: widget.child,
       appBar: AppBar(
-        // centerTitle: true,
+        toolbarHeight: 100,
+        centerTitle: true,
         // title: Text(appBarTitles[_currentIndex]),
+
+        //  IconButton(
+        //   icon: SvgPicture.asset(
+        //     "jobme_logo_white.svg",
+        //   ),
+        //   onPressed: () => context.goNamed('home'),
+        // ),
+
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            IconButton(
-              icon: SvgPicture.asset("jobme_logo_white.svg",
-                  width: 250, fit: BoxFit.fitWidth),
-              onPressed: () => context.goNamed('home'),
+            SizedBox(
+              height: 60,
+              width: 120,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  padding: const EdgeInsets.all(16.0),
+                  backgroundColor: const Color.fromRGBO(0, 82, 102, 1),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                  ),
+                ),
+                onPressed: () => context.goNamed('home'),
+                child: SvgPicture.asset(
+                  "jobme_logo_white.svg",
+                ),
+              ),
             ),
             for (var i = 0; i < tabs.length; i++)
-              SizedBox(
-                width: 100,
-                child: IconButton(
-                  tooltip: tabs[i].label,
-                  icon: tabs[i].icon,
-                  color: i == _currentIndex
-                      ? const Color.fromRGBO(234, 94, 64, 1)
-                      : Colors.white,
-                  onPressed: () => _onItemTapped(context, i),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: SizedBox(
+                  height: 60,
+                  width: 120,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                      ),
+                      padding: EdgeInsets.zero,
+                      foregroundColor: i == _currentIndex
+                          ? const Color.fromRGBO(234, 94, 64, 1)
+                          : Colors.white,
+                      backgroundColor: i == _currentIndex
+                          ? Colors.white
+                          : const Color.fromARGB(212, 0, 92, 115),
+                    ),
+                    onPressed: () => _onItemTapped(context, i),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          tabs[i].icon,
+                          Text(
+                            tabs[i].label!,
+                            textAlign: TextAlign.center,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
               ),
           ],
         ),
+
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(10),
           ),
         ),
         backgroundColor: const Color.fromRGBO(0, 82, 102, 1),
-        // leading: Row(
-        //   children: [
-        //     IconButton(
-        //       icon: SvgPicture.asset(
-        //         "jobme_logo_white.svg",
-        //         height: 30,
-        //       ),
-        //       onPressed: () => context.goNamed('home'),
-        //     ),
-        //     for (var i = 0; i < tabs.length; i++)
-        //       IconButton(
-        //         tooltip: tabs[i].label,
-        //         icon: tabs[i].icon,
-        //         color: i == _currentIndex
-        //             ? const Color.fromRGBO(234, 94, 64, 1)
-        //             : Colors.white,
-        //         onPressed: () => _onItemTapped(context, i),
-        //       ),
-        //   ],
-        // ),
         actions: [
-          //         for (var i = 0; i < tabs.length; i++)
-          // IconButton(
-          //   tooltip: tabs[i].label,
-          //   icon: tabs[i].icon,
-          //   color: i == _currentIndex
-          //       ? const Color.fromRGBO(234, 94, 64, 1)
-          //       : Colors.white,
-          //   onPressed: () => _onItemTapped(context, i),
-          // ),
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () => context.goNamed('logout'),
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: SizedBox(
+                  height: 60,
+                  width: 120,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: const Color.fromRGBO(234, 94, 64, 1),
+                      backgroundColor: Colors.white,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(5),
+                        ),
+                      ),
+                      padding: EdgeInsets.zero,
+                    ),
+                    onPressed: () => context.goNamed('logout'),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(Icons.logout),
+                          Text(
+                            'déconnexion',
+                            textAlign: TextAlign.center,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
